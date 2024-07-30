@@ -19,6 +19,7 @@ This project is a web application that utilizes the Groq API with the Llama mode
 ```bash
 git clone  https://github.com/siddharth-k03/Simulated_Personality.git
 cd Simulated_Personality
+```
 
 ### Step 2: Create a Virtual Environment
 ```bash
@@ -26,16 +27,16 @@ python -m venv env
 source env/bin/activate   # On Windows, use `env\Scripts\activate`
 ```
 
-###Step 3: Install the Dependencies
+### Step 3: Install the Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-###Step 4: Obtain the Groq API Key
+### Step 4: Obtain the Groq API Key
 Sign up or log in to your account at Groq.
 Navigate to the API section and generate a new API key.
 
-###Step 5: Create a .env File
+### Step 5: Create a .env File
 In the root directory of the project, create a file named .env and add your Groq API key:
 
 ```makefile
