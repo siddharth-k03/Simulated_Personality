@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Application</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Personality Insights Box -->
+        <div class="box">
+            <h2>Personality Insights</h2>
+            <form id="personality-form">
+                <textarea id="paragraph" placeholder="Enter a paragraph detailing the personality..."></textarea>
+                <button type="submit">Get Personality Insights</button>
+            </form>
+            <div id="insights"></div>
+        </div>
+
+        <!-- Chat Box -->
+        <div class="box">
+            <h2>Chat with Chatbot</h2>
+            <form id="chat-form">
+                <input type="text" id="question" placeholder="Ask a question...">
+                <button type="submit">Ask</button>
+            </form>
+            <div id="response"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('personality-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const paragraph = document.getElementById('paragraph').value;
+            const responseDiv = document.getElementById('insights');
+            try {
+                const response = await fetch('/personality', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ paragraph })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    responseDiv.innerText = data.insights;
+                } else {
+                    responseDiv.innerText = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                responseDiv.innerText = `Error: ${error.message}`;
+            }
+        });
+
+        document.getElementById('chat-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+            const responseDiv = document.getElementById('response');
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    responseDiv.innerText = data.response;
+                } else {
+                    responseDiv.innerText = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                responseDiv.innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
