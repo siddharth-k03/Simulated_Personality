@@ -85,7 +85,7 @@ What is your favorite season?
 **Response:**
 Based on my personality, which values creativity, innovation, and collaboration, my favorite season is Autumn. It inspires an appreciative spirit and reflects the qualities of change and creativity, making it a perfect time for new discoveries and cultural celebrations.
 
-##Acknowledgments
+## Acknowledgments
 
 This project utilizes the following sources and technologies:
 
